@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Detection Result</title>
+  <style>
+    body {
+      background: #000000;
+      color: #00ffcc;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background-color: #111;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #00ffcc;
+      width: 500px;
+    }
+
+    .status {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .status.Safe {
+      color: #00ff00;
+      text-shadow: 0 0 5px #00ff00;
+    }
+
+    .status.Phishing {
+      color: #ff4d4d;
+      text-shadow: 0 0 5px #ff4d4d;
+    }
+
+    a.button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 15px;
+      background-color: #00ffcc;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    a.button:hover {
+      background-color: #00e6b8;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="status {{ result.status }}">{{ result.status }}</div>
+    <p><strong>Reason:</strong> {{ result.reason }}</p>
+    <p><strong>URL:</strong> {{ result.input_url }}</p>
+
+    {% if show_link %}
+      <a class="button" href="{{ result.input_url }}" target="_blank">🔗 Visit Website</a>
+    {% endif %}
+    <br><br>
+    <a class="button" href="/">🔙 Check Another URL</a>
+  </div>
+</body>
+</html>
